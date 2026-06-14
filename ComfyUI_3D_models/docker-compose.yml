@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  comfyui:
+    build: .
+    container_name: comfyui-local
+    shm_size: '32gb'
+    restart: unless-stopped
+    ports:
+      - "8188:8188"
+    volumes:
+      - ./models:/app/ComfyUI/models
+      - ./output:/app/ComfyUI/output
+      - ./input:/app/ComfyUI/input
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]

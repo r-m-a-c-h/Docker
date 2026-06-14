@@ -1,0 +1,31 @@
+version: "3"
+
+services:
+  adguardhome:
+    image: adguard/adguardhome:latest
+    container_name: adguardhome
+    restart: unless-stopped
+    ports:
+      # DNS queries (TCP + UDP)
+      - "53:53/tcp"
+      - "53:53/udp"
+      # DHCP server
+      - "67:67/udp"
+      - "68:68/udp"
+      # Web interface (HTTP + HTTPS)
+      - "80:80/tcp"
+      - "443:443/tcp"
+      - "443:443/udp"
+      # AdGuard API
+      - "3000:3000/tcp"
+      # DNS-over-TLS (DoT)
+      - "853:853/tcp"
+      # DNS-over-QUIC (DoQ)
+      - "784:784/udp"
+      # Additional DNS ports
+      - "8853:8853/udp"
+      - "5443:5443/tcp"
+      - "5443:5443/udp"
+    volumes:
+      - "./configuration:/opt/adguardhome/work"
+      - "./data:/opt/adguardhome/conf"
