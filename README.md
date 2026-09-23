@@ -37,7 +37,7 @@
 *   `docker pull <image>` — Download an image from a registry.
 *   `docker rmi <image>` — Remove a local image.
   
-### Docker Compose CLI Cheat Sheet
+### Docker Compose CLI
 
 *   `docker compose up -d` — Build, (re)create, start, and attach to containers for a service in the background.
 *   `docker compose down` — Stop and remove containers, networks, and (optionally) volumes defined in the compose file.
